@@ -8,14 +8,14 @@ namespace AddressBook
 {
     public class Contacts
     {
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public int zipcode { get; set; }
-        public long phoneNumber { get; set; }
-        public string email { get; set; }
+        public string firstName;
+        public string lastName;
+        public string address;
+        public string city;
+        public string state;
+        public int zipcode;
+        public long phoneNumber;
+        public string email;
 
         public Contacts(string firstName, string lastName, string address, string city, string state, int zipcode, long phoneNumber, string email)
         {
@@ -28,6 +28,7 @@ namespace AddressBook
             this.phoneNumber = phoneNumber;
             this.email = email;
         }
+
 
 
 

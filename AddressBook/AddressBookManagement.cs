@@ -50,10 +50,9 @@ namespace AddressBook
         //Viewing Contacts
         public void ViewContact()
         {
+            int count = 1;
             foreach (var contact in contactList)
             {
-              //  Console.Write("First Name: " + contact.firstName + "\nLast Name: " + contact.lastName + "\nAddress: " + contact.address + "\nCity: " + contact.city + "\nState: " + contact.state + "\nZipCode: " + contact.zipcode + "\nPhone Number: " + contact.phoneNumber + "\nEmail ID: " + contact.email);
-
                 Console.WriteLine("First Name: " + contact.firstName);
                 Console.WriteLine("Last Name: " + contact.lastName);
                 Console.WriteLine("Address: " + contact.address);
@@ -62,7 +61,63 @@ namespace AddressBook
                 Console.WriteLine("ZipCode: " + contact.zipcode);
                 Console.WriteLine("Phone Number: " + contact.phoneNumber);
                 Console.WriteLine("Email ID: " + contact.email);
+                count++;
             }
+        }
+
+        //Edit Contact Details
+        public void EditContact(string input)
+        {
+            for (int i = 0; i < contactList.Count; i++)
+            {
+                if (contactList[i].firstName == input)
+                {
+                    Console.WriteLine("\nChoose the field you want to edit " +
+                        "\n1.)First Name\n2.)Last Name\n3.)Address\n4.)City\n5.)State\n6.)ZipCode\n7.)Phone Number\n8.)EmailID\n");
+                    int editDetails = Convert.ToInt32(Console.ReadLine());
+                    switch (editDetails)
+                    {
+                        case 1:
+                            Console.WriteLine("Edit First Name: ");
+                            contactList[i].firstName = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.WriteLine("Edit Last Name: ");
+                            contactList[i].lastName = Console.ReadLine();
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter New Address: ");
+                            contactList[i].address = Console.ReadLine();
+                            break;
+                        case 4:
+                            Console.WriteLine("Edit City: ");
+                            contactList[i].city = Console.ReadLine();
+                            break;
+                        case 5:
+                            Console.WriteLine("Edit State: ");
+                            contactList[i].state = Console.ReadLine();
+                            break;
+                        case 6:
+                            Console.WriteLine("Edit ZipCode: ");
+                            contactList[i].zipcode = Convert.ToInt32(Console.ReadLine());
+                            break;
+                        case 7:
+                            Console.WriteLine("Edit Phone Number: ");
+                            contactList[i].phoneNumber = Convert.ToInt64(Console.ReadLine());
+                            break;
+                        case 8:
+                            Console.WriteLine("Edit Email-ID: ");
+                            contactList[i].email = Console.ReadLine();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Input");
+                            break;
+                    }
+                }
+                else
+                    Console.WriteLine("Person {0} is not in the List!", input);
+            }
+            ViewContact();
         }
 
     }
