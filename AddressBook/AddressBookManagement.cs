@@ -140,21 +140,31 @@ namespace AddressBook
         public void AddNewAddressBook()
         {
             //Creating new dictionary
-            Dictionary<string, List<Contacts>> addressBookDictionary = new Dictionary<string, List<Contacts>>();
-            Console.WriteLine("Enter the number of Address Books :  ");
+            Dictionary<string, AddressBookManagement> addressBookDict = new Dictionary<string, AddressBookManagement>();
+            Console.WriteLine("Number of books to be added :  ");
             int numberOfBooks = Convert.ToInt32(Console.ReadLine());
             while (numberOfBooks > 0)
             {
-                Console.WriteLine("Enter address book name : ");
+                Console.WriteLine("Enter the name of Address Book :");
                 string addBookName = Console.ReadLine();
-                AddressBookManagement book = new AddressBookManagement();
-                book.AddNewContact();
-                addressBookDictionary.Add(addBookName, contactList);
-                Console.WriteLine("\nAddress Book Name : " + addBookName);
-                book.ViewContact();
+                if (addressBookDict.ContainsKey(addBookName))
+                {
+                    Console.WriteLine("Address Book Already Exists");
+                }
+                else
+                {
+                    AddressBookManagement books = new AddressBookManagement();
+                    books.AddNewContact();
+                    addressBookDict.Add(addBookName, books);
+                }
+                foreach (KeyValuePair<string, AddressBookManagement> item in addressBookDict)
+                {
+                    Console.WriteLine($"key:{item.Key} value:{item.Value}");
+                }
                 numberOfBooks--;
             }
         }
+        }
 
     }
-}
+
