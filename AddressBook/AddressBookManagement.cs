@@ -62,7 +62,7 @@ namespace AddressBook
                 Console.WriteLine("Phone Number: " + contact.phoneNumber);
                 Console.WriteLine("Email ID: " + contact.email);
                 count++;
-            Console.WriteLine("===========================================");
+           // Console.WriteLine("===========================================");
             }
         }   
 

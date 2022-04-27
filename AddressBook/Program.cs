@@ -13,9 +13,9 @@ namespace AddressBook
             Console.WriteLine("Welcome to address book system!");
 
             AddressBookManagement addressBook = new AddressBookManagement();
-            addressBook.AddContactDetail("Arun","Kumar","Ranchi","Ranchi","Jharkhand",789456,7894561230,"xyz@gmail.com");
+            //addressBook.AddContactDetail("Arun", "Kumar", "Ranchi", "Ranchi", "Jharkhand", 789456, 7894561230, "xyz@gmail.com");
             Console.WriteLine("==============================================================");
-            addressBook.AddContactDetail("Ashish","Jain","Dhaulpur","Dhaulpur","Rajasthan",789356,7894561231,"ashish@gmail.com");
+            //addressBook.AddContactDetail("Ashish", "Jain", "Dhaulpur", "Dhaulpur", "Rajasthan", 789356, 7894561231, "ashish@gmail.com");
 
             //Operations on Address Book System
             Console.WriteLine("Please choose an option:");
@@ -24,9 +24,16 @@ namespace AddressBook
             switch (option)
             {
                 case 1:
-                    addressBook.AddNewContact();
+                    Console.Write("Enter the number of contact list to be added : ");
+                    int number = Convert.ToInt32(Console.ReadLine());
+                    for (int index = 0; index < number; index++)
+                    {
+                        addressBook.AddNewContact();
+                    }
+                    addressBook.ViewContact();
                     break;
                 case 2:
+                    
                     addressBook.ViewContact();
                     break;
                 case 3:
@@ -38,7 +45,7 @@ namespace AddressBook
                     Console.WriteLine("Enter the First Name & Last Name : ");
                     string fName = Console.ReadLine();
                     string lName = Console.ReadLine();
-                    addressBook.DeletePersonContact(fName,lName);
+                    addressBook.DeletePersonContact(fName, lName);
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");
