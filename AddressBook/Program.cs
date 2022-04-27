@@ -13,13 +13,11 @@ namespace AddressBook
             Console.WriteLine("Welcome to address book system!");
 
             AddressBookManagement addressBook = new AddressBookManagement();
-            //addressBook.AddContactDetail("Arun", "Kumar", "Ranchi", "Ranchi", "Jharkhand", 789456, 7894561230, "xyz@gmail.com");
-            Console.WriteLine("==============================================================");
-            //addressBook.AddContactDetail("Ashish", "Jain", "Dhaulpur", "Dhaulpur", "Rajasthan", 789356, 7894561231, "ashish@gmail.com");
+
 
             //Operations on Address Book System
             Console.WriteLine("Please choose an option:");
-            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact\n5.)Add Address Book");
+            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact\n5.)Add Address Book\n6.)SearchUser");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -50,6 +48,11 @@ namespace AddressBook
                 case 5:
                     addressBook.AddNewAddressBook();
                     addressBook.ViewContact();
+                    break;
+                case 6:
+                    addressBook.AddContactDetail("Arun", "Kumar", "Ranchi", "Ranchi", "Jharkhand", 789456, 7894561230, "xyz@gmail.com");
+                    addressBook.AddContactDetail("Ashish", "Jain", "Dhaulpur", "Dhaulpur", "Rajasthan", 789356, 7894561231, "ashish@gmail.com");
+                    addressBook.SearchPerson();
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");
