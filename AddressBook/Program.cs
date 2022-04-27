@@ -14,8 +14,12 @@ namespace AddressBook
 
             AddressBookManagement addressBook = new AddressBookManagement();
             addressBook.AddContactDetail("Arun","Kumar","Ranchi","Ranchi","Jharkhand",789456,7894561230,"xyz@gmail.com");
+            Console.WriteLine("==============================================================");
+            addressBook.AddContactDetail("Ashish","Jain","Dhaulpur","Dhaulpur","Rajasthan",789356,7894561231,"ashish@gmail.com");
+
+            //Operations on Address Book System
             Console.WriteLine("Please choose an option:");
-            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Exit");
+            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -31,7 +35,10 @@ namespace AddressBook
                     addressBook.EditContact(firstName);
                     break;
                 case 4:
-                    Environment.Exit(0);
+                    Console.WriteLine("Enter the First Name & Last Name : ");
+                    string fName = Console.ReadLine();
+                    string lName = Console.ReadLine();
+                    addressBook.DeletePersonContact(fName,lName);
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");

@@ -62,8 +62,9 @@ namespace AddressBook
                 Console.WriteLine("Phone Number: " + contact.phoneNumber);
                 Console.WriteLine("Email ID: " + contact.email);
                 count++;
+            Console.WriteLine("===========================================");
             }
-        }
+        }   
 
         //Edit Contact Details
         public void EditContact(string input)
@@ -118,6 +119,21 @@ namespace AddressBook
                     Console.WriteLine("Person {0} is not in the List!", input);
             }
             ViewContact();
+        }
+
+        public void DeletePersonContact(string firstName, string lastName)
+        {
+            for (int index = 0; index < contactList.Count; index++)
+            {
+                if (contactList[index].firstName == firstName && contactList[index].lastName == lastName)
+                {
+                    Console.WriteLine("Contact {0} {1} Deleted Successfully from Address Book.", contactList[index].firstName, contactList[index].lastName);
+                    contactList.RemoveAt(index);
+                    ViewContact();
+                }
+                else
+                    Console.WriteLine("Person {0} {1} do not exists.", firstName, lastName);
+            }
         }
 
     }
