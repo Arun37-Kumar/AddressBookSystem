@@ -12,10 +12,29 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to address book system!");
 
-            Contacts contact = new Contacts();
-            contact.firstName = "Arun";
-            Console.WriteLine("First name : "+contact.firstName);
+            AddressBookManagement addressBook = new AddressBookManagement();
+
+            Console.WriteLine("Please choose an option:");
+            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Exit\n");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    addressBook.AddNewContact();
+                    break;
+                case 2:
+                    addressBook.ViewContact();
+                    break;
+                case 3:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input!");
+                    break;
+            }
             Console.ReadLine();
         }
+
     }
 }
+
