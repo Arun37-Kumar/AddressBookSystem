@@ -62,9 +62,9 @@ namespace AddressBook
                 Console.WriteLine("Phone Number: " + contact.phoneNumber);
                 Console.WriteLine("Email ID: " + contact.email);
                 count++;
-           // Console.WriteLine("===========================================");
+                // Console.WriteLine("===========================================");
             }
-        }   
+        }
 
         //Edit Contact Details
         public void EditContact(string input)
@@ -133,6 +133,26 @@ namespace AddressBook
                 }
                 else
                     Console.WriteLine("Person {0} {1} do not exists.", firstName, lastName);
+            }
+        }
+
+        //Add Address Book
+        public void AddNewAddressBook()
+        {
+            //Creating new dictionary
+            Dictionary<string, List<Contacts>> addressBookDictionary = new Dictionary<string, List<Contacts>>();
+            Console.WriteLine("Enter the number of Address Books :  ");
+            int numberOfBooks = Convert.ToInt32(Console.ReadLine());
+            while (numberOfBooks > 0)
+            {
+                Console.WriteLine("Enter address book name : ");
+                string addBookName = Console.ReadLine();
+                AddressBookManagement book = new AddressBookManagement();
+                book.AddNewContact();
+                addressBookDictionary.Add(addBookName, contactList);
+                Console.WriteLine("\nAddress Book Name : " + addBookName);
+                book.ViewContact();
+                numberOfBooks--;
             }
         }
 

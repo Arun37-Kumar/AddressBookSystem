@@ -19,7 +19,7 @@ namespace AddressBook
 
             //Operations on Address Book System
             Console.WriteLine("Please choose an option:");
-            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact");
+            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact\n5.)Add Address Book");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -46,6 +46,10 @@ namespace AddressBook
                     string fName = Console.ReadLine();
                     string lName = Console.ReadLine();
                     addressBook.DeletePersonContact(fName, lName);
+                    break;
+                case 5:
+                    addressBook.AddNewAddressBook();
+                    addressBook.ViewContact();
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");
