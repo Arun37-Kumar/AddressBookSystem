@@ -222,6 +222,14 @@ namespace AddressBook
             Console.WriteLine("No of persons in city " + city + " is " + count);
         }
 
+        public void SortPersonName()
+        {
+            foreach (KeyValuePair<string, List<Contacts>> user in addressBookDictionary)
+            {
+                user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
+            }
+            ViewPerson();
+        }
 
     }
 }
