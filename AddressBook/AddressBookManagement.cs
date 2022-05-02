@@ -186,6 +186,7 @@ namespace AddressBook
                 Console.WriteLine("No record found");
         }
 
+
         public void ViewPerson()
         {
             Console.WriteLine("enter the city or state name");
@@ -208,6 +209,19 @@ namespace AddressBook
                 }
             }
         }
+
+        public void CountByCityOrState()
+        {
+            int count = 0;
+            Console.WriteLine("enter the city or state name");
+            string city = Console.ReadLine();
+            foreach (KeyValuePair<string, List<Contacts>> user in addressBookDictionary)
+            {
+                count += user.Value.Count(x => x.city == city || x.state == city);
+            }
+            Console.WriteLine("No of persons in city " + city + " is " + count);
+        }
+
 
     }
 }
