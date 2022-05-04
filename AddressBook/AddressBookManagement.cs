@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AddressBook
 {
@@ -19,34 +20,47 @@ namespace AddressBook
             addressBookDictionary = new Dictionary<string, List<Contacts>>();
         }
 
-        public void AddContactDetail(string firstName, string lastName, string address, string city, string state, int zipcode, long phoneNumber, string email)
-        {
-            Contacts personDetail = new Contacts(firstName, lastName, address, city, state, zipcode, phoneNumber, email);
-            contactList.Add(personDetail);
-        }
 
         //Adding New Contact
-        public void AddNewContact()
+        public List<Contacts> AddNewContact()
         {
-            Console.WriteLine("Enter First Name: ");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name: ");
-            string lastName = Console.ReadLine();
-            Console.WriteLine("Enter the Address: ");
-            string address = Console.ReadLine();
-            Console.WriteLine("Enter the City: ");
-            string city = Console.ReadLine();
-            Console.WriteLine("Enter the State: ");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter the Zipcode: ");
-            int zipcode = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the Phone Number: ");
-            long phoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter your Email-ID: ");
-            string email = Console.ReadLine();
+          //  int number = Convert.ToInt32(Console.ReadLine());
 
-            AddContactDetail(firstName, lastName, address, city, state, zipcode, phoneNumber, email);
-            ViewContact();
+                Console.WriteLine("Enter First Name: ");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Enter Last Name: ");
+                string lastName = Console.ReadLine();
+                Console.WriteLine("Enter the Address: ");
+                string address = Console.ReadLine();
+                Console.WriteLine("Enter the City: ");
+                string city = Console.ReadLine();
+                Console.WriteLine("Enter the State: ");
+                string state = Console.ReadLine();
+                Console.WriteLine("Enter the Zipcode: ");
+                int zipcode = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Phone Number: ");
+                long phoneNumber = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter your Email-ID: ");
+                string email = Console.ReadLine();
+
+                Contacts personDetail = new Contacts(firstName, lastName, address, city, state, zipcode, phoneNumber, email);
+                if (CheckIfAlreadyPresent(firstName, lastName))
+                    Console.WriteLine("Already exist");
+                else
+                {
+                    contactList.Add(personDetail);
+                }
+
+
+
+            return contactList;
+        }
+
+
+        //using lambda for no duplicate entry
+        public bool CheckIfAlreadyPresent(string firstName, string lastName)
+        {
+            return contactList.Any(x => x.firstName == firstName && x.lastName == lastName);
         }
 
         //Viewing Contacts
@@ -156,6 +170,7 @@ namespace AddressBook
                 else
                 {
                     AddressBookManagement books = new AddressBookManagement();
+                    List<Contacts> list = books.AddNewContact();
                     books.AddNewContact();
                 }
                 foreach (KeyValuePair<string, AddressBookManagement> item in addressBookDictionary)
@@ -268,6 +283,11 @@ namespace AddressBook
             ViewPerson();
         }
 
+        public void WriteAddressBook()
+        {
+            AddressBookFileIO fileIO = new AddressBookFileIO();
+            fileIO.WriteAddressBookWithStreamWriter(addressBookDictionary);
+        }
 
     }
 }
