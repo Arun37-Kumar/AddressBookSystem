@@ -17,7 +17,7 @@ namespace AddressBook
 
             //Operations on Address Book System
             Console.WriteLine("Please choose an option:");
-            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact\n5.)Add Address Book\n6.)SearchUser\n7.)View Person\n8.)View Person By state or country\n9.)View Person by name\n10.)View Person by choice\n11.)Read and Write into Text");
+            Console.WriteLine("1.)Add New Contact\n2.)View Contact\n3.)Edit Contact by finding name\n4.)Delete Contact\n5.)Add Address Book\n6.)SearchUser\n7.)View Person\n8.)View Person By state or country\n9.)View Person by name\n10.)View Person by choice\n11.)Read and Write into Text\n12.)CSV read write");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -76,7 +76,12 @@ namespace AddressBook
                     addressBook.WriteAddressBook();
                     AddressBookFileIO file = new AddressBookFileIO();
                     file.AddressBookReadStream();
-                    
+                    break;
+                case 12:
+                    addressBook.AddNewAddressBook();
+                    addressBook.WriteAddressBook();
+                    AddressBookFileIO csvfile = new AddressBookFileIO();
+                    csvfile.ReadCsvFile();
                     break;
                 default:
                     Console.WriteLine("Invalid Input!");

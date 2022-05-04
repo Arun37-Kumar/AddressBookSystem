@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace AddressBook
 {
@@ -11,6 +13,7 @@ namespace AddressBook
     {
         Dictionary<string, List<Contacts>> contactList;
         public string path = @"E:\Assignments RFP\Day 23\AddressBook\AddressBook\FileIO\Sample.txt";
+        public string csvpath = @"E:\Assignments RFP\Day 23\AddressBook\AddressBook\FileIO\AddressBook.csv";
 
         public AddressBookFileIO()
         {
@@ -51,5 +54,18 @@ namespace AddressBook
             Console.WriteLine("Files read successfully!");
         }
 
+        public void ReadCsvFile()
+        {
+            using (StreamReader streamreader = new StreamReader(csvpath))
+            using (CsvReader csvReader = new CsvReader(streamreader, CultureInfo.InvariantCulture))
+            {
+                List<Contacts> records = csvReader.GetRecords<Contacts>().ToList();
+                foreach (var contact in records)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
+            Console.WriteLine("File Read Successfully");
+        }
     }
 }
